@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import json
 import pickle
@@ -413,7 +414,7 @@ if st.button("Predict", type="primary"):
     input_data = Preprocess(pd.DataFrame([form_data]))
     print(input_data.dtypes)
     print(input_data.shape)
-    with open(r'model_files\salary_model.pkl', 'rb') as f:
+    with open(os.path.join('model_files','salary_model.pkl'), 'rb') as f:
             model = pickle.load(f)
 
     prediction = model.predict(input_data.iloc[0].values.reshape(1, -1))
@@ -421,7 +422,7 @@ if st.button("Predict", type="primary"):
 
     prediction = np.expm1(prediction)
     predicted_salary = prediction[0]
-    margin = 0.10  # 10%
+    margin = 0.10  
 
     lower_bound = round(predicted_salary * (1 - margin), 2)
     upper_bound = round(predicted_salary * (1 + margin), 2)

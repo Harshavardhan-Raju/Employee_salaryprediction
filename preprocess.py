@@ -96,7 +96,7 @@ def Preprocess(input_data):
 
     df['WorkExp'] = np.log1p(df['WorkExp'])
 
-    with open(r"model_files\features.pkl", "rb") as f:
+    with open(os.path.join("model_files","features.pkl"), "rb") as f:
         saved_features = pickle.load(f)
 
     # 2. Add any missing columns in the current input
