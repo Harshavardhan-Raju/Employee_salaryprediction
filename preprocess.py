@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MultiLabelBinarizer, LabelEncoder
 import pickle
+import os
 
 def Preprocess(input_data):
     df = input_data.copy()
@@ -34,7 +35,7 @@ def Preprocess(input_data):
         # Drop unused object columns
     df.drop(columns=['Age', 'EdLevel'], errors='ignore', inplace=True)
 
-    with open(r'model_files\country_encoder.pkl','rb' ) as f:
+    with open(os.path.join("model_files", "country_encoder.pkl"), "rb") as f:
         le_country = pickle.load(f)
     df['CountryEncoded'] = le_country.transform(df['Country'])
     df.drop(columns = ['Country'],inplace=True)
