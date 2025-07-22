@@ -113,7 +113,7 @@ employee_salaryprediction/
 ## 📞 Contact
 
 Made with ❤️ by **Harshavardhan Raju**  
-📧 Email: [your-email@example.com]  
-🔗 GitHub: [github.com/Harshavardhan-Raju](https://github.com/Harshavardhan-Raju)
+📧 Email: [luckymuppala314@gmail.com]  
+🔗 GitHub(https://github.com/Harshavardhan-Raju)
 
 If you find this project helpful, please ⭐ the repo!
