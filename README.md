@@ -1,108 +1,120 @@
-# 💼 Employee Salary Prediction App
+# 🧠 Employee Salary Prediction
 
-This is a machine learning-based web application that predicts an employee's salary using demographic and professional attributes. Built using **Streamlit** for the frontend and **XGBoost** for the prediction model, this app serves as a demonstration of end-to-end ML deployment.
-
----
-
-## 🚀 Live App
-
-👉 **[Launch the App](https://employeesalaryprediction.streamlit.app/)**  
+This is a machine learning web application built using **Streamlit** that predicts an employee's salary based on various personal, educational, and professional attributes. It leverages the **XGBoost Regressor** model trained on the **Stack Overflow Developer Survey** dataset.
 
 ---
 
-## 📊 Features
+## 🚀 Live Demo
 
-- Input form to collect:
-  - Age group
-  - Education level
-  - Job title
-  - Work experience
-  - Remote work type
-  - Employment status
-  - Tech stack (Languages, Databases, Tools, Platforms, etc.)
-- Real-time salary prediction using trained model
-- Input preprocessing using label encoding and multi-hot encoding
-- Clean UI built with Streamlit
+👉 [Streamlit Cloud App]((https://employeesalaryprediction.streamlit.app/))  
+(Replace with your deployed app URL)
 
 ---
 
-## 🧠 ML Model Details
-
-- **Algorithm**: XGBoost Regressor
-- **Preprocessing**:
-  - Label Encoding (Age, Education, Country)
-  - MultiLabelBinarizer for multi-select categorical fields
-  - Dummy variable creation for job titles
-  - All encoders and feature alignment preserved from training
-- **Target**: Salary (USD)
-- **Model Storage**:
-  - `salary_model.pkl`
-  - `country_encoder.pkl`
-  - `features.pkl` (to ensure feature alignment at inference time)
-
----
-
-## 🛠 Tech Stack
-
-- Python 3.10+
-- Pandas, NumPy
-- Scikit-learn
-- XGBoost
-- Streamlit
-- Pickle for model/encoder storage
-
----
-
-## 📁 Directory Structure
+## 📁 Project Structure
 
 ```
-project_employee/
+employee_salaryprediction/
 │
-├── main.py                  # Streamlit frontend
-├── preprocess.py            # Preprocessing logic
-├── requirements.txt         # Python dependencies
-├── model_files/             # Saved models and encoders
-│   ├── salary_model.pkl
-│   ├── country_encoder.pkl
-│   └── features.pkl
+├── main.py                  # Streamlit frontend for input and prediction
+├── preprocess.py            # Handles user input preprocessing to match training data
+├── test.ipynb               # Notebook used to clean & preprocess raw survey data
+├── model_files/
+│   ├── salary_model.pkl             # Trained ML model
+│   ├── country_encoder.pkl          # LabelEncoder for country field
+│   └── features_list.pkl            # All features used for training
+├── requirements.txt         # Required Python packages
+└── README.md                # Project documentation (this file)
 ```
+
+> **Explanation:**
+> - `test.ipynb`: Used for preparing and transforming the raw dataset.
+> - `preprocess.py`: Used by `main.py` to process user form data and send it to the model.
+> - If you want the original dataset, download it from:  
+>   👉 [https://survey.stackoverflow.co](https://survey.stackoverflow.co)
 
 ---
 
-## 🔧 Installation Instructions
+## 📦 Features
 
-1. **Clone the repository**
+- Accepts user input on:
+  - Job Role
+  - Education Level
+  - Age Group
+  - Years of Experience
+  - Employment Type
+  - Work Style (Remote/In-Person)
+  - Technologies Used: Languages, Databases, Cloud, Web Frameworks, Tools, etc.
+- Encodes categorical and multivalued fields using label encoding and multi-label binarization.
+- Outputs predicted salary with clean formatting using Streamlit components.
+
+---
+
+## 📊 Model Info
+
+- **Model Used:** XGBoost Regressor
+- **Performance:**
+  - RMSE: ~36,178
+  - MAE: ~25,254
+  - R² Score: 0.57
+- **Total Features:** 269 (after one-hot + multi-hot encoding)
+
+---
+
+## 📚 Dataset
+
+- Source: [Stack Overflow Developer Survey](https://survey.stackoverflow.co/)
+- Download and extract the dataset to preprocess it using `test.ipynb`.
+- Cleaned data is used to train the model and extract feature columns.
+
+---
+
+## 🔧 Run Locally
+
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/Harshavardhan-Raju/Employee_salaryprediction.git
    cd Employee_salaryprediction
    ```
 
-2. **Install the dependencies**
+2. **Install Required Packages**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Run the app**
+3. **Run the Streamlit App**
    ```bash
    streamlit run main.py
    ```
 
 ---
 
-## 🌐 Deployment (Streamlit Cloud)
+## 📌 Deployment Tips (Streamlit Cloud)
 
-If deploying on **Streamlit Cloud**, make sure to:
+- Include all `pkl` files (model, encoder, features) in the repo.
+- Ensure **relative paths** are used while loading `.pkl` files (e.g., `model_files/salary_model.pkl`).
+- Commit everything to GitHub before deploying to [Streamlit Cloud](https://streamlit.io/cloud).
+- In Streamlit Cloud dashboard:
+  - Set the file to run as `main.py`
+  - Add `requirements.txt` if not detected automatically
 
-- Upload all `.pkl` files inside a `model_files/` directory.
-- Ensure correct **relative paths** are used when loading pickled models.
-- Add `requirements.txt` to specify dependencies.
+---
+
+## 🎨 Final Output Display Options
+
+- Use `st.success()` for green box output
+- Alternatively, for better styling:
+  ```python
+  st.markdown(f"### 💰 Predicted Salary: `${output[0]:,.2f}`")
+  ```
+  This shows dollar symbol and formats with commas nicely.
 
 ---
 
-## 👨‍💻 Author
+## 📞 Contact
 
-**Harshavardhan Raju**  
-🎓 B.Tech Student | 💡 AI/ML Enthusiast  
-🔗 [GitHub](https://github.com/Harshavardhan-Raju)
+Made with ❤️ by **Harshavardhan Raju**  
+📧 Email: [your-email@example.com]  
+🔗 GitHub: [github.com/Harshavardhan-Raju](https://github.com/Harshavardhan-Raju)
 
----
+If you find this project helpful, please ⭐ the repo!
