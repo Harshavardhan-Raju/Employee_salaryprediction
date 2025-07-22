@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 from preprocess import Preprocess
 
-st.set_page_config(page_title="Developer Survey", page_icon="💻", layout="wide")
+st.set_page_config(page_title="Employee_salary_predictor", page_icon="💻", layout="wide")
 
-st.title("🔍 Developer Survey")
+st.title("🔍 Employee Salary prediction")
 st.markdown("---")
 
 if 'form_data' not in st.session_state:
