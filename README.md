@@ -6,8 +6,7 @@ This is a machine learning web application built using **Streamlit** that predic
 
 ## 🚀 Live Demo
 
-👉 [Streamlit Cloud App]((https://employeesalaryprediction.streamlit.app/))  
-(Replace with your deployed app URL)
+👉 [Streamlit Cloud App](https://employeesalaryprediction.streamlit.app/)
 
 ---
 
