@@ -388,6 +388,17 @@ selected_tools = st.multiselect(
 st.markdown("---")
 if st.button("Predict", type="primary"):
     # Collect all form data
+    required = {
+        "DevType": current_job,
+        "EdLevel": education,
+        "Country": country,
+        "RemoteWork": work_situation
+    }
+
+    missing = [field for field,value in required.items() if value in ("Select an option")]
+    if missing:
+        st.error(f"Please select a value for: {', '.join(missing)}")
+        st.stop()
     form_data = {
         "DevType": current_job,
         "EdLevel": education,
