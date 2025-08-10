@@ -53,9 +53,9 @@ employee_salaryprediction/
 
 - **Model Used:** XGBoost Regressor
 - **Performance:**
-  - RMSE: ~36,178
-  - MAE: ~25,254
-  - R² Score: 0.57
+  RMSE (Root Mean Squared Error): 35,311.64
+  MAE (Mean Absolute Error): 24,512.40
+  R² Score: 0.5924
 - **Total Features:** 269 (after one-hot + multi-hot encoding)
 
 ---
